@@ -3,7 +3,7 @@ import numpy as np
 
 start_time = 0
 end_time = 0.000347
-time_step = 10 ** -5
+time_step = 10 ** -9
 p_0=1.1*10**5
 v_0 = 0
 rho=10**3
