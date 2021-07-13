@@ -8,8 +8,8 @@ t_f_1 = 1
 d_t_1 = 10 ** -5
 
 u_0_2 = 1
-t_f_2 = 10 ** -4
-d_t_2 = 10 ** -6
+t_f_2 = 10 ** -8
+d_t_2 = 10 ** -8
 
 u_0_3 = 0.001
 t_f_3 = 10 ** -4
@@ -67,8 +67,9 @@ axs[0].plot(part_d_1['t'], part_d_1['u'], color='g', label='Radius: 10m')
 axs[0].legend()
 
 part_d_2 = problem_2_d(u_0_2, t_f_2, d_t_2)
-axs[1].plot(part_d_2['t'], part_d_2['u'], color='r', label='Radius: 1m')
+axs[1].plot(part_d_2['t'], part_d_2['u'], color='r', label='Radius: 1m',)
 axs[1].legend()
+#axs[1].set_ylim([-1,1])
 
 part_d_3 = problem_2_d(u_0_3, t_f_3, d_t_3)
 axs[2].plot(part_d_3['t'], part_d_3['u'], color='b', label='Radius: 0.001m')
