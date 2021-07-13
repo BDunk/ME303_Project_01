@@ -3,7 +3,7 @@ import time
 from matplotlib import pyplot as plt
 from methods import rk_4
 
-def problem_2_b(d_t, u_0):
+def problem_2_b(u_0):
     rho = 1000
     mu = 10 ** -3
     sigma = 72 * 10 ** -3
