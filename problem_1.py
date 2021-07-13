@@ -23,7 +23,7 @@ for ii in range(round((end_time-start_time)/time_step)):
 
     t_i = analytical['t'][ii]
     t_i_plus_1 = t_i + time_step
-    u_i_plus_1 = ((1.5*r_0*np.cos(np.sqrt(lambda_squared)*t_i_plus_1)+v_0/np.sqrt(lambda_squared)*np.sin(np.sqrt(lambda_squared)*t_i_plus_1))/3+0.5*r_0)
+    u_i_plus_1 = ((0.5*r_0*np.cos(np.sqrt(lambda_squared)*t_i_plus_1)+v_0/np.sqrt(lambda_squared)*np.sin(np.sqrt(lambda_squared)*t_i_plus_1))+0.5*r_0)
     analytical['u'].append(u_i_plus_1)
     analytical['t'].append(t_i_plus_1)
 
