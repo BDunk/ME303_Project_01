@@ -4,7 +4,7 @@ from methods import forward_euler, rk_2, rk_4
 
 start_time = 0
 end_time = 0.000347
-time_step = 10 ** -9
+time_step = 10 ** -6
 p_0=1.01*10**5
 v_0 = 0
 rho=10**3
