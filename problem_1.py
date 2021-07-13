@@ -31,14 +31,21 @@ plot = plt.plot(np.array(analytical['t']), np.array(analytical['u']), label = 'a
 
 
 #forward euler stuff
-Euler = {'u': [r_0], 'v': [v_0], 't': [start_time]}
+Euler = {'u': [r_0], 'v': [v_0], 't': [start_time], 'max_error':{'e': 0, 't': 0}}
+
 
 for ii in range(round((end_time-start_time)/time_step)):
     t_i = Euler['t'][ii]
     u_i = Euler['u'][ii]
     v_i = Euler['v'][ii]
 
+    e_i = np.abs(u_i - analytical['u'][ii])
+
+    if e_i > Euler['max_error']['e']:
+        Euler['max_error'] = {'e': e_i, 't': t_i}
+
     t_plus, u_plus, v_plus = forward_euler(t_i, u_i, v_i, time_step, v_func, w_func)
+
 
     Euler['t'].append(t_plus)
     Euler['u'].append(u_plus)
@@ -47,27 +54,37 @@ for ii in range(round((end_time-start_time)/time_step)):
 plot = plt.plot(np.array(Euler['t']), np.array(Euler['u']), label = 'forward_euler')
 
 #RK2 stuff
-RK_2 = {'u': [r_0], 'v': [v_0], 't': [start_time]}
+RK_2 = {'u': [r_0], 'v': [v_0], 't': [start_time], 'max_error':{'e': 0, 't': 0}}
 for ii in range(round((end_time-start_time)/time_step)):
     t_i = RK_2['t'][ii]
     u_i = RK_2['u'][ii]
     v_i = RK_2['v'][ii]
+
+    e_i = np.abs(u_i - analytical['u'][ii])
+
+    if e_i > RK_2['max_error']['e']:
+        RK_2['max_error'] = {'e': e_i, 't': t_i}
 
     t_plus, u_plus, v_plus = rk_2(t_i, u_i, v_i, time_step, v_func, w_func)
 
     RK_2['t'].append(t_plus)
     RK_2['u'].append(u_plus)
     RK_2['v'].append(v_plus)
-rk_2
+
 plot = plt.plot(np.array(RK_2['t']), np.array(RK_2['u']), label = 'rk_2')
 
 # RK4 stuff
-RK_4 = {'u': [r_0], 'v': [v_0], 't': [start_time]}
+RK_4 = {'u': [r_0], 'v': [v_0], 't': [start_time], 'max_error':{'e': 0, 't': 0}}
 
 for ii in range(round((end_time-start_time)/time_step)):
     u_i = RK_4['u'][ii]
     v_i = RK_4['v'][ii]
     t_i = RK_4['t'][ii]
+
+    e_i = np.abs(u_i - analytical['u'][ii])
+
+    if e_i > RK_4['max_error']['e']:
+        RK_4['max_error'] = {'e': e_i, 't': t_i}
 
     t_plus, u_plus, v_plus = rk_4(t_i, u_i, v_i, time_step, v_func, w_func)
 
@@ -77,7 +94,14 @@ for ii in range(round((end_time-start_time)/time_step)):
 
 plot = plt.plot(RK_4['t'], RK_4['u'], label = 'rk_4')
 
+print(f"Errors (maximum error, time of maximium error):")
+print(f"Euler - ({Euler['max_error']['e']}, {Euler['max_error']['t']}) ")
+print(f"RK_2 - ({RK_2['max_error']['e']}, {RK_2['max_error']['t']}) ")
+print(f"RK_4 - ({RK_4['max_error']['e']}, {RK_4['max_error']['t']}) ")
+
 plt.legend()
 plt.show()
+
+
 
 
