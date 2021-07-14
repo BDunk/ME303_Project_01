@@ -5,15 +5,15 @@ from methods import rk_4
 
 u_0_1 = 10
 t_f_1 = 1
-d_t_1 = 10 ** -5
+d_t_1 = 10 ** -7
 
 u_0_2 = 1
-t_f_2 = 10 ** -8
-d_t_2 = 10 ** -8
+t_f_2 = 10 ** -1.5
+d_t_2 = 10 ** -8.5
 
 u_0_3 = 0.001
-t_f_3 = 10 ** -4
-d_t_3 = 10 ** -6
+t_f_3 = 10 ** -4.5
+d_t_3 = 10 ** -12
 
 def problem_2_d(u_0, t_f,d_t):
     rho = 1000
@@ -29,7 +29,7 @@ def problem_2_d(u_0, t_f,d_t):
     w_func = lambda t, u, v: ((-p_0 - 4 * mu * v / u - 2 * sigma / u) - (3 / 2 * v ** 2 * rho)) / (rho * u)
     v_func = lambda t, u, v: v
 
-    epsilon = 10 ** 0
+    epsilon = u_0 * 0.01
 
     # Part B
     RK_4 = {'u': [u_0], 'v': [v_0], 't': [t_0]}
@@ -69,7 +69,6 @@ axs[0].legend()
 part_d_2 = problem_2_d(u_0_2, t_f_2, d_t_2)
 axs[1].plot(part_d_2['t'], part_d_2['u'], color='r', label='Radius: 1m',)
 axs[1].legend()
-#axs[1].set_ylim([-1,1])
 
 part_d_3 = problem_2_d(u_0_3, t_f_3, d_t_3)
 axs[2].plot(part_d_3['t'], part_d_3['u'], color='b', label='Radius: 0.001m')
