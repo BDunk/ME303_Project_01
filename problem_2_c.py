@@ -8,12 +8,12 @@ rho = 1000
 mu = 10 ** -3
 sigma = 72 * 10 ** -3
 v_0 = 0
-p_0 = 100100000
+p_0 = 1.01*10**5
 
 # times
 d_t = 10 ** -6
 t_0 = 0
-t_f = 4
+t_f = 1
 
 # functions
 w_func = lambda t, u, v: ((-p_0 - 4 * mu * v / u - 2 * sigma / u) - (3 / 2 * v ** 2 * rho)) / (rho * u)
@@ -33,6 +33,7 @@ sum_25_error = 0
 sum_125_error = 0
 # this should probably be recursive since all I was doing was copying the same code and dividing by 10
 for aa in range(round((t_f - t_0) / d_t)):
+    print(aa)
 
     sum_1_error += (value_625_i['u'] - value_1_i['u']) ** 2
     sum_5_error += (value_625_i['u'] - value_5_i['u']) ** 2
