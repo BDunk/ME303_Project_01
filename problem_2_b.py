@@ -27,6 +27,8 @@ epsilon = 10 ** 0
 RK_4 = {'u': [u_0], 'v': [v_0], 't': [t_0]}
 
 ii = 0
+# I am aware, I do not need to be storing every data point, probably every 1000 or so would be totally fine,
+# but I am not nearing the limit of my available memory, so I just left as is.
 while RK_4['t'][ii] < t_f:
     if(ii % 10000) == 0:
         # just displaying percentages, doing it every 1000 times to not waste resources
