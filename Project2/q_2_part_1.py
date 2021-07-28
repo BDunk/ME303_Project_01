@@ -51,7 +51,7 @@ def plot(t_index):
     plt.title(t_index*d_s)
 
 ani = animation.FuncAnimation(fig, plot,int((t_1 - t_0) / d_t) + 1, interval=10)
-ani.save('./animation.mp4', writer='ffmpeg', fps=15)
+ani.save('./animation_1.mp4', writer='ffmpeg', fps=15)
 
 plt.show()
 
