@@ -24,7 +24,7 @@ for t_index in range(int((t_1 - t_0) / d_t) + 1):
         for y_index in range(int((y_1 - y_0) / d_s) + 1):
             y = y_index * d_s
             if math.isclose(t, 0):
-                values[t_index, x_index, y_index] = np.sin(4 * np.pi * x) * np.cos(4 * np.pi * y)
+                values[t_index, x_index, y_index] = np.sin(np.pi * x) * np.cos(4 * np.pi * y)
             elif math.isclose(x, 0):
                 values[t_index, x_index, y_index] = 0
             elif math.isclose(x, 1):

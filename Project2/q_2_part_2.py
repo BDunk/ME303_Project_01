@@ -26,13 +26,13 @@ for t_index in range(int((t_1 - t_0) / d_t) + 1):
             if math.isclose(t, 0):
                 values[t_index, x_index, y_index] = np.sin(4 * np.pi * x) * np.cos(4 * np.pi * y)
             elif math.isclose(x, 0):
-                values[t_index, x_index, y_index] = 0
+                values[t_index, x_index, y_index] =  d_t * alpha * (0/d_s) + values[t_index-1, x_index, y_index]
             elif math.isclose(x, 1):
-                values[t_index, x_index, y_index] = 0
+                values[t_index, x_index, y_index] =  d_t * alpha * (2/d_s) + values[t_index-1, x_index, y_index]
             elif math.isclose(y, 0):
-                values[t_index, x_index, y_index] = np.sin(np.pi * x)
+                values[t_index, x_index, y_index] = 1
             elif math.isclose(y, 1):
-                values[t_index, x_index, y_index] = np.cos(2 * np.pi * x) - 1
+                values[t_index, x_index, y_index] = - 1
             else:
                 x_term = (values[t_index-1, x_index + 1, y_index] - 2 * values[t_index-1, x_index, y_index] + values[
                     t_index-1, x_index - 1, y_index]) / d_s ** 2
@@ -51,7 +51,7 @@ def plot(t_index):
     plt.title(t_index*d_s)
 
 ani = animation.FuncAnimation(fig, plot,int((t_1 - t_0) / d_t) + 1, interval=10)
-ani.save('./animation_1.mp4', writer='ffmpeg', fps=15)
+ani.save('./animation_2.mp4', writer='ffmpeg', fps=15)
 
 plt.show()
 
