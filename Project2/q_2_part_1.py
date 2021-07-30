@@ -48,7 +48,7 @@ def plot(t_index):
     x = np.arange(x_0, x_1+d_s, d_s)
     y = np.arange(y_0, y_1+d_s, d_s)
     heatmap = ax.pcolormesh(x,y,values[t_index], shading='auto')
-    plt.title(t_index*d_s)
+    plt.title(t_index*d_t)
 
 ani = animation.FuncAnimation(fig, plot,int((t_1 - t_0) / d_t) + 1, interval=10)
 ani.save('./animation_1.mp4', writer='ffmpeg', fps=15)
