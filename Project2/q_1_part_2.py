@@ -11,10 +11,12 @@ d_r = 10 ** -5
 T_surrounding = 100
 T_egg_initial = 25
 
+record_every_n_steps = 10**4
 def eggCookingValues(R):
     values_for_plot = [[], []]
     T_values_old = []
     t_index = 0
+    n = 0
     while True:
         t = d_t * t_index
         T_values = []
@@ -31,8 +33,9 @@ def eggCookingValues(R):
             else:
                 T = (T_values_old[r_index] + F * (T_values_old[r_index + 1]+T_values_old[r_index - 1])) / (1 + 2 * F)
             T_values.append(T)
-        if math.isclose(t % 1, 0):
+        if n==record_every_n_steps:
             # this prevents gigabyte sized .csv
+            n=0
             values_for_plot[0].append(t)
             values_for_plot[1].append(T_values[0])
             print(round(t, 3), T_values[0], T_values[int(R / d_r / 4)], T_values[int(R / d_r / 2)],
@@ -45,6 +48,7 @@ def eggCookingValues(R):
                 return np.array(values_for_plot)
         T_values_old = T_values
         t_index+=1
+        n+=1
 
 
 # the assumption is made that there is no difference between the spherical eggs aside from the radius
