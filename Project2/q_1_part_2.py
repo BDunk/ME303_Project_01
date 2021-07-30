@@ -5,7 +5,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 # https://www.sciencedirect.com/science/article/abs/pii/S0260877405001330#:~:text=Conclusions,to%2088.2%25%20(mass).
-alpha = (0.4 + 0.6) / 2
+alpha = 0.6
 d_t = 10 ** -4
 d_r = 10 ** -5
 T_surrounding = 100
@@ -30,13 +30,19 @@ def eggCookingValues(R):
                 T = (T_values_old[r_index] + F * 2 * T_values_old[r_index+1])/(1+2*F)
             else:
                 T = (T_values_old[r_index] + F * (T_values_old[r_index + 1]+T_values_old[r_index - 1])) / (1 + 2 * F)
-
             T_values.append(T)
-        values_for_plot[0].append(t)
-        values_for_plot[1].append(T_values[0])
-        print(round(t,3), T_values[0], T_values[int(R/d_r/4)], T_values[int(R/d_r/2)], T_values[int(3*R/d_r/4)], T_values[int(R/d_r)] )
-        if T_values[0] > 80:
-            return np.array(values_for_plot)
+        if math.isclose(t % 1, 0):
+            # this prevents gigabyte sized .csv
+            values_for_plot[0].append(t)
+            values_for_plot[1].append(T_values[0])
+            print(round(t, 3), T_values[0], T_values[int(R / d_r / 4)], T_values[int(R / d_r / 2)],
+                  T_values[int(3 * R / d_r / 4)], T_values[int(R / d_r)])
+            if T_values[0] > 80:
+                # this code used to be outside of the other if statement
+                # it was moved here so that usually only one condition has to be checked
+                # side benefit is that we are only plotting on a seconds scale, so we get
+                # the lowest whole num of seconds
+                return np.array(values_for_plot)
         T_values_old = T_values
         t_index+=1
 
