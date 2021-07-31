@@ -72,6 +72,6 @@ if not os.path.isfile('ostrich.csv'):
     np.savetxt("ostrich.csv", ostrich_values[0], delimiter=",")
 
 fig, ax = plt.subplots()
-#ax.plot(quail_values['t'], quail_radius['T_at_0'], label='temp_at_center')
+ax.plot(quail_values['t'], quail_radius['T_at_0'], label='temp_at_center')
 
 plt.show()
