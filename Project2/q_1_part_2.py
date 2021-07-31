@@ -67,9 +67,9 @@ ostrich_radius = 0.0688
 chicken_values = np.genfromtxt('chicken.csv', delimiter=',', dtype=None, names=True) if os.path.isfile('chicken.csv') else eggCookingValues(chicken_radius),
 if not os.path.isfile('chicken.csv'):
     np.savetxt("chicken.csv", chicken_values[0], delimiter=",")
-ostrich_values = np.genfromtxt('ostrich.csv', delimiter=',', dtype=None, names=True) if os.path.isfile('ostrich.csv') else eggCookingValues(ostrich_radius),
-if not os.path.isfile('ostrich.csv'):
-    np.savetxt("ostrich.csv", ostrich_values[0], delimiter=",")
+#ostrich_values = np.genfromtxt('ostrich.csv', delimiter=',', dtype=None, names=True) if os.path.isfile('ostrich.csv') else eggCookingValues(ostrich_radius),
+#if not os.path.isfile('ostrich.csv'):
+#    np.savetxt("ostrich.csv", ostrich_values[0], delimiter=",")
 
 fig, ax = plt.subplots()
 ax.plot(quail_values['t'], quail_radius['T_at_0'], label='temp_at_center')
