@@ -61,9 +61,9 @@ chicken_radius = 0.0263
 # ((0.150 + 0.125) / 2) / 2
 ostrich_radius = 0.0688
 
-quail_values = np.genfromtxt('quail.csv', delimiter=',', dtype=None, names=True) if os.path.isfile('quail.csv') else eggCookingValues(quail_radius),
-if not os.path.isfile('quail.csv'):
-    np.savetxt("quail.csv", quail_values[0], delimiter=",")
+# quail_values = np.genfromtxt('quail.csv', delimiter=',', dtype=None, names=True) if os.path.isfile('quail.csv') else eggCookingValues(quail_radius),
+# if not os.path.isfile('quail.csv'):
+#     np.savetxt("quail.csv", quail_values[0], delimiter=",")
 chicken_values = np.genfromtxt('chicken.csv', delimiter=',', dtype=None, names=True) if os.path.isfile('chicken.csv') else eggCookingValues(chicken_radius),
 if not os.path.isfile('chicken.csv'):
     np.savetxt("chicken.csv", chicken_values[0], delimiter=",")
