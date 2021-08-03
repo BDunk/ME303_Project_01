@@ -61,17 +61,28 @@ chicken_radius = 0.0263
 # ((0.150 + 0.125) / 2) / 2
 ostrich_radius = 0.0688
 
-quail_values = np.genfromtxt('quail.csv', delimiter=',', dtype=None, names=True) if os.path.isfile('quail.csv') else eggCookingValues(quail_radius),
+quail_values = np.genfromtxt('quail.csv', delimiter=',', dtype=None) if os.path.isfile('quail.csv') else eggCookingValues(quail_radius),
 if not os.path.isfile('quail.csv'):
     np.savetxt("quail.csv", quail_values[0], delimiter=",")
-chicken_values = np.genfromtxt('chicken.csv', delimiter=',', dtype=None, names=True) if os.path.isfile('chicken.csv') else eggCookingValues(chicken_radius),
+chicken_values = np.genfromtxt('chicken.csv', delimiter=',', dtype=None) if os.path.isfile('chicken.csv') else eggCookingValues(chicken_radius),
 if not os.path.isfile('chicken.csv'):
     np.savetxt("chicken.csv", chicken_values[0], delimiter=",")
-ostrich_values = np.genfromtxt('ostrich.csv', delimiter=',', dtype=None, names=True) if os.path.isfile('ostrich.csv') else eggCookingValues(ostrich_radius),
+ostrich_values = np.genfromtxt('ostrich.csv', delimiter=',', dtype=None) if os.path.isfile('ostrich.csv') else eggCookingValues(ostrich_radius),
 if not os.path.isfile('ostrich.csv'):
     np.savetxt("ostrich.csv", ostrich_values[0], delimiter=",")
 
 fig, ax = plt.subplots()
-ax.plot(quail_values[0], quail_radius[1], label='temp_at_center')
 
+print(quail_values)
+plt.axhline(y=80, color='r', linestyle='-', label = 'Cooked Temperature')
+
+# I don't know why this is 3D, I can't figure out np.genfromtext
+ax.plot(quail_values[0][0], quail_values[0][1], label='Quail Center Temperature')
+
+ax.plot(chicken_values[0][0], chicken_values[0][1], label='Chicken Center Temperature')
+
+ax.plot(ostrich_values[0][0], ostrich_values[0][1], label='Chicken Center Temperature')
+
+plt.legend()
+plt.savefig('./plot.png', format='png')
 plt.show()
