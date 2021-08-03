@@ -81,7 +81,7 @@ ax.plot(quail_values[0][0], quail_values[0][1], label='Quail Center Temperature'
 
 ax.plot(chicken_values[0][0], chicken_values[0][1], label='Chicken Center Temperature')
 
-ax.plot(ostrich_values[0][0], ostrich_values[0][1], label='Chicken Center Temperature')
+ax.plot(ostrich_values[0][0], ostrich_values[0][1], label='Ostrich Center Temperature')
 
 plt.legend()
 plt.savefig('./plot.png', format='png')
